@@ -22,10 +22,13 @@ namespace Lof\Opengraph\Helper;
 
 class Configuration extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const FACEBOOK_OPENGRAPH_PATH = 'facebook/opengraph';
+    const PACKAGE_OPENGRAPH_PATH = 'seo/package';
+    const FACEBOOK_OPENGRAPH_PATH = 'seo/opengraph';
     const STORE_NAME_PATH = 'general/store_information/name';
 
     private $config;
+
+    private $package_config;
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -46,6 +49,42 @@ class Configuration extends \Magento\Framework\App\Helper\AbstractHelper
         $config = $this->getConfig();
 
         return (boolean) $config['is_enabled'];
+    }
+
+    public function isEnabledForProduct()
+    {
+        $config = $this->getPackageConfig();
+        if(!$config){
+            return true;
+        }
+        return (isset($config['product']) && isset($config['product']['og_enabled']))?(boolean) $config['product']['og_enabled']:false;
+    }
+
+    public function isEnabledForCategory()
+    {
+        $config = $this->getPackageConfig();
+        if(!$config){
+            return true;
+        }
+        return (isset($config['category']) && isset($config['category']['og_enabled']))?(boolean) $config['category']['og_enabled']:false;
+    }
+
+    public function isEnabledForPage()
+    {
+        $config = $this->getPackageConfig();
+        if(!$config){
+            return true;
+        }
+        return (isset($config['page']) && isset($config['page']['og_enabled']))?(boolean) $config['page']['og_enabled']:false;
+    }
+
+    public function isEnabledForWebsite()
+    {
+        $config = $this->getPackageConfig();
+        if(!$config){
+            return true;
+        }
+        return (isset($config['website']) && isset($config['website']['og_enabled']))?(boolean) $config['website']['og_enabled']:false;
     }
 
     public function getFbAppId()
@@ -82,5 +121,14 @@ class Configuration extends \Magento\Framework\App\Helper\AbstractHelper
         }
 
         return $this->config;
+    }
+
+    private function getPackageConfig()
+    {
+        if(!$this->package_config){
+            $this->package_config = $this->scopeConfig->getValue(self::PACKAGE_OPENGRAPH_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        }
+
+        return $this->package_config;
     }
 }

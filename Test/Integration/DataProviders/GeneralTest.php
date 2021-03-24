@@ -29,7 +29,7 @@ class GeneralTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @magentoDbIsolation enabled
-     * @magentoConfigFixture current_store facebook/opengraph/default_image default/test.jpeg
+     * @magentoConfigFixture current_store seo/opengraph/default_image default/test.jpeg
      * @magentoConfigFixture current_store general/store_information/name store_name
      */
     public function testItReturnsCorrectTags()

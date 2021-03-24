@@ -61,7 +61,33 @@ class AddTagsToHeadMeta
         }
 
         $pageType = $this->pageType->getPageType();
-
+        $isEnabledForPage = true;
+        switch($pageType){
+            case "cms":
+                if(!$this->configuration->isEnabledForPage()){
+                    $isEnabledForPage = false;
+                }
+                break;
+            case "category":
+                if(!$this->configuration->isEnabledForCategory()){
+                    $isEnabledForPage = false;
+                }
+                break;
+            case "product":
+                if(!$this->configuration->isEnabledForProduct()){
+                    $isEnabledForPage = false;
+                }
+                break;
+            case "default":
+            default:
+                if(!$this->configuration->isEnabledForWebsite()){
+                    $isEnabledForPage = false;
+                }
+            break;
+        }
+        if(!$isEnabledForPage){
+            return $result;
+        }
         $tags = $this->tagsCollector->getTags($pageType);
 
         if (empty($tags)) {

@@ -23,7 +23,7 @@ class ConfigurationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @magentoDbIsolation enabled
-     * @magentoConfigFixture current_store facebook/opengraph/fb_app_id fb_test
+     * @magentoConfigFixture current_store seo/opengraph/fb_app_id fb_test
      */
     public function testItReturnCorrectFbAppId()
     {

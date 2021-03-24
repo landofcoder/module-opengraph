@@ -37,7 +37,7 @@ class TagsCollector
         if (empty($pageType) || !isset($this->dataProviders[$pageType])) {
             $pageType = \Lof\Opengraph\Helper\PageType::DEFAULT_PAGE_TYPE;
         }
-
+        
         $dataProviders = $this->sortProviders($this->dataProviders[$pageType]);
 
         $tags = [];
