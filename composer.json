@@ -2,8 +2,24 @@
   "name": "landofcoder/module-opengraph",
   "description": "Opengraph Extension",
   "type": "magento2-module",
+  "version": "1.0.0",
   "homepage": "https://landofcoder.com",
-  "license": "OSL-3.0",
+  "keywords": [
+    "landofcoder",
+    "landofcoder seo toolkit",
+    "magento 2 opengraph extension"
+  ],
+  "license": [
+      "OSL-3.0",
+      "AFL-3.0"
+  ],
+  "authors": [
+      {
+          "name": "Lof",
+          "email": "landofcoder@gmail.com",
+          "role": "Magento 2 Extension Provider"
+      }
+  ],
   "autoload": {
     "files": [
       "registration.php"
