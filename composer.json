@@ -1,0 +1,15 @@
+{
+  "name": "landofcoder/module-opengraph",
+  "description": "Opengraph Extension",
+  "type": "magento2-module",
+  "homepage": "https://landofcoder.com",
+  "license": "OSL-3.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Lof\\Opengraph\\": ""
+    }
+  }
+}
