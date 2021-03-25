@@ -30,7 +30,7 @@ class Type implements \Magento\Framework\Data\OptionSourceInterface
      */
     protected $options;
 
-    protected $types = ['article', 'website'];
+    protected $types = ['article', 'website', 'product'];
 
     /**
      * Get options
